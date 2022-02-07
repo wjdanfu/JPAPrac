@@ -30,4 +30,10 @@ public class UserController {
         return ApiResponse.ok(userIdx);
     }
 
+    @PostMapping("login")
+    public ApiResponse<String> login(@RequestBody LoginDto loginDto) throws NotFoundException{
+        String jwt = userService.login(loginDto);
+        return ApiResponse.ok(jwt);
+    }
+
 }
