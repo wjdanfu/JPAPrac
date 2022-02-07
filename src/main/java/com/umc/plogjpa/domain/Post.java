@@ -19,15 +19,15 @@ public class Post{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long postIdx;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userIdx", referencedColumnName = "userIdx")
     private User user;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "post")
-//    private List<Likecnt> likecnts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Likecnt> likecnts = new ArrayList<>();
 
     private String title;
     private String content;

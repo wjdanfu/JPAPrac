@@ -15,11 +15,11 @@ public class ReComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long recommentIdx;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userIdx", referencedColumnName = "userIdx")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commentIdx")
     private Comment comment;
 

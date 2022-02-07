@@ -70,7 +70,9 @@ public class PostController {
     }
 
     @PostMapping("/like/{postIdx}/{userIdx}")
-    public ApiResponse<String> postLike(@PathVariable long postIdx, long userIdx) throws NotFoundException{
-        return ApiResponse.ok(postService.postLike(postIdx,userIdx));
+    public ApiResponse<Boolean> postLike(@PathVariable long postIdx,@PathVariable long userIdx)
+            throws NotFoundException{
+        return ApiResponse.ok(
+                postService.postLike(postIdx,userIdx));
     }
 }

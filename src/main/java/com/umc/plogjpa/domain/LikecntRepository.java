@@ -6,8 +6,9 @@ import java.util.Optional;
 
 public interface LikecntRepository extends JpaRepository<Likecnt,Long> {
 
-    Optional<Integer> existsByUserIdxAndPostIdx(long userIdx, long postIdx);
+    boolean existsByUser_userIdxAndPost_postIdx(long userIdx, long postIdx);
 
-    Optional<Likecnt> findByUserIdxAndPostIdx(long userIdx, long postIdx);
+    void deleteByUser_userIdxAndPost_postIdx(long userIdx, long postIdx);
 
+    int countByPost_postIdx(long postIdx);
 }

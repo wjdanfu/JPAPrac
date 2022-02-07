@@ -17,11 +17,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long commentIdx;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userIdx", referencedColumnName = "userIdx")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postIdx", referencedColumnName = "postIdx")
     private Post post;
 

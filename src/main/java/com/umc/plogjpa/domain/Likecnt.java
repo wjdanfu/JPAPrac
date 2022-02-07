@@ -13,29 +13,24 @@ public class Likecnt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ListcntIdx;
+    private Long LikecntIdx;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userIdx", referencedColumnName = "userIdx")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postIdx", referencedColumnName = "postIdx")
     private Post post;
 
-    @Column(columnDefinition = "ACTIVE")
     private String status;
 
     @Builder
-    public Likecnt(long ListcntIdx,User user,Post post, String status){
-        this.ListcntIdx=ListcntIdx;
+    public Likecnt(long LikecntIdx,User user,Post post, String status){
+        this.LikecntIdx=LikecntIdx;
         this.user = user;
         this.post = post;
         this.status = status;
     }
 
-    public void update(String status) {
-
-        this.status = status;
-    }
 }

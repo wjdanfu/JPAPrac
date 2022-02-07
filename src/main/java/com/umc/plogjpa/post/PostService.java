@@ -92,30 +92,23 @@ public class PostService {
         return postResIdxDto;
     }
 
-    public String postLike(long postIdx, long userIdx) throws NotFoundException {
+    public boolean postLike(long postIdx,long userIdx) throws NotFoundException {
         User user = userRepository.findByUserIdx(userIdx)
                 .orElseThrow(() -> new NotFoundException("회원정보를 찾을 수 없습니다."));
         Post post = postRepository.findByPostIdx(postIdx)
-                .orElseThrow(() -> new NotFoundException("없는 게시글 입니다."));
-        int check = likecntRepository.existsByUserIdxAndPostIdx(userIdx,postIdx).get();
-        Likecnt likecntStatus = likecntRepository.findByUserIdxAndPostIdx(userIdx,postIdx).get();
-        if (check == 0){
+                .orElseThrow(() -> new IllegalArgumentException("없는 게시글 입니다."));
+        boolean check = likecntRepository.existsByUser_userIdxAndPost_postIdx(user.getUserIdx(),postIdx);
+        if (check == false){
             Likecnt likecnt = Likecnt.builder()
                     .user(user)
                     .post(post)
                     .status("ACTIVE")
                     .build();
             likecntRepository.save(likecnt);
-            return "좋아요 성공";
+            return true;
         }else{
-            if(likecntStatus.getStatus().equals("ACTIVE")){
-                likecntStatus.update("NOACTIVE");
-                return "좋아요 취소";
-            }else{
-                likecntStatus.update("ACTIVE");
-                return "좋아요 성공";
-            }
+            likecntRepository.deleteByUser_userIdxAndPost_postIdx(user.getUserIdx(), postIdx);
+            return false;
         }
-
     }
 }

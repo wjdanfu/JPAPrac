@@ -31,14 +31,14 @@ public class User {
     @Column(length = 300)
     private String userImage;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "user")
-//    private List<Likecnt> likecnts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Likecnt> likecnts = new ArrayList<>();
 
     @Builder
     public User(String name,String password,String comment,
