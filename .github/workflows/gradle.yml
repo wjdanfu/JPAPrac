@@ -51,4 +51,4 @@ jobs:
         aws s3 cp \
         --region ap-northeast-2 \
         --acl private \ 
-        ./bucketbwtest.zip s3://bucketbwtest/
+    ./bucketbwtest.zip s3://bucketbwtest/
