@@ -55,10 +55,7 @@ jobs:
         run: aws s3 cp --region ap-northeast-2 --acl private ./bucketbwtest.zip s3://bucketbwtest/
 
       # Deploy
-      - name: Code Deploy #4
-        run: aws deploy create-deployment --application-name plogJPAdeploy
-          --deployment-config-name CodeDeployDefault.OneAtATime
-          --deployment-group-name plogJPAdeployGroup
-          --s3-location bucket=bucketbwtest,bundleType=zip,key=bucketbwtest.zip
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name plogJPAdeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name plogJPAdeployGroup --s3-location bucket=bucketbwtest,bundleType=zip,key=bucketbwtest.zip
 
 
