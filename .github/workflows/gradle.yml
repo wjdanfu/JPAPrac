@@ -67,3 +67,4 @@ jobs:
           --s3-location bucket=bucketbwtest,bundleType=zip,key=bucketbwtest.zip \
           --region ap-northeast-2
 
+
