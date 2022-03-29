@@ -68,6 +68,7 @@ public class PostController {
     @GetMapping("/posts/{postIdx}")
     public ApiResponse<PostIdxResDto> getPostIdx(@PathVariable long postIdx)
             throws NotFoundException {
+        System.out.println("test");
         return ApiResponse.ok(
                 postService.getPostIdx(postIdx)
         );
