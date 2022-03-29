@@ -38,7 +38,7 @@ jobs:
 
       # Jar 파일 복사
       - name: Copy Jar
-        run: cp ./build/libs/plogJPA-0.0.1-SNAPSHOT-plain.jar ./deploy
+        run: cp ./build/libs/*.jar ./deploy
 
       # 파일 압축
       - name: Make zip file
