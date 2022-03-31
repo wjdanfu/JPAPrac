@@ -11,14 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PostResDto {
-    private Long postIdx;
     private String imgUrl;
     private String title;
     private String content;
 
     @Builder
     public PostResDto(Post entity){
-        this.postIdx = entity.getPostIdx();
         this.imgUrl = entity.getImgUrl();
         this.title = entity.getTitle();
         this.content = entity.getContent();
