@@ -50,17 +50,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://bucketbwtest/plogJPA/$GITHUB_SHA.zip
-
-      # Deploy
-      - name: Code Deploy
-        run: aws deploy create-deployment --application-name plogJPAdeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name plogJPAdeployGroup --s3-location bucket=bucketbwtest,bundleType=zip,key=plogJPA/$GITHUB_SHA.zip
-
-
-# - name: Upload to S3
-#        run: aws s3 cp --region ap-northeast-2 --acl private ./bucketbwtest.zip s3://bucketbwtest/
+#      - name: Upload to S3
+#        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://bucketbwtest/plogJPA/$GITHUB_SHA.zip
 #
 #      # Deploy
 #      - name: Code Deploy
-#        run: aws deploy create-deployment --application-name plogJPAdeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name plogJPAdeployGroup --s3-location bucket=bucketbwtest,bundleType=zip,key=bucketbwtest.zip
+#        run: aws deploy create-deployment --application-name plogJPAdeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name plogJPAdeployGroup --s3-location bucket=bucketbwtest,bundleType=zip,key=plogJPA/$GITHUB_SHA.zip
+
+
+      - name: Upload to S3
+        run: aws s3 cp --region ap-northeast-2 --acl private ./bucketbwtest.zip s3://bucketbwtest/bucketbwtest.zip
+
+      # Deploy
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name plogJPAdeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name plogJPAdeployGroup --s3-location bucket=bucketbwtest,bundleType=zip,key=bucketbwtest.zip
